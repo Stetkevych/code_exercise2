@@ -1,0 +1,49 @@
+def addTask(task, task_list):
+    task_list.append(task)
+    return task_list
+
+def removeTask(task, task_list):
+    task_list.remove(task)
+    return task_list
+
+
+def getTasks(tasks_list):
+    return tasks_list
+
+def quitApplication():
+    print("You have exited the application.")
+
+
+def main():
+    task_list = []
+    while True:
+        user_input = input("Enter a command (add, remove, show tasks, quit):")
+        
+        if user_input == "add":
+            task = input("Enter a task to add: ")
+            addTask(task, task_list)
+            print(f"Task '{task}' added to the list.")
+        
+        elif user_input == "remove":
+            task = input("Enter a task to remove: ")
+            if task in task_list:
+                removeTask(task, task_list)
+                print(f"Task '{task}' removed from the list.")
+            else:
+                print(f"Task '{task}' not found in the list.")
+        
+        elif user_input == "show tasks":
+            tasks = getTasks(task_list)
+            print("Current tasks in the list:")
+            for t in tasks:
+                print(f"- {t}")
+        
+        elif user_input == "quit":
+            quitApplication()
+            break
+        
+        else:
+            print("Invalid command. Please try again.")
+            
+            
+main()
